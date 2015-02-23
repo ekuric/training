@@ -72,7 +72,7 @@ Once you have prepared your VMs, you can do the following on **each** VM:
 
 1. Edit the `OPTIONS=` line of your `/etc/sysconfig/docker` file:
 
-        OPTIONS=--insecure-registry 0.0.0.0/0 -H fd://
+        OPTIONS=--insecure-registry 0.0.0.0/0
 
     The `--insecure-registry` option tells Docker to trust any registry on the
     specified subnet, without requiring a certificate. You would want to
@@ -208,8 +208,10 @@ Then you can start the SDN node:
 
 You may also want to enable the service.
 
-Starting the sdn-node service will automatically start the openshift-node
-service.
+Start openshift-node to get pod assigned to node
+
+	systemctl start openshift-node 
+	systemctl enable openshift-node
 
 We will start our testing and operations with only one OpenShift "node" -- the
 master. Later, we will add the other two nodes.
